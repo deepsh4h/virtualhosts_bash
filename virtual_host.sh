@@ -4,7 +4,8 @@
 # Date   : 15/12/17                 #
 #####################################
 read -p "Enter Domain or Subdomain: " domain
-cp -rp /var/www/html /var/www/$domain
+read -p "Enter email for Server Admin: " email
+mkdir /var/www/$domain
 cat > /etc/apache2/sites-available/$domain.conf << EOF
 <VirtualHost *:80>
         # The ServerName directive sets the request scheme, hostname and port $
@@ -16,7 +17,7 @@ cat > /etc/apache2/sites-available/$domain.conf << EOF
         # However, you must set it for any further virtual host explicitly.
         ServerName $domain
 
-        ServerAdmin developers@infiniteit.biz
+        ServerAdmin $email
         DocumentRoot /var/www/$domain
 
         <Directory /var/www/$domain>
@@ -25,10 +26,6 @@ cat > /etc/apache2/sites-available/$domain.conf << EOF
         Order allow,deny
         allow from all
         </Directory>
-
-        <IfModule mpm_itk_module>
-           AssignUserId ubuntu ubuntu
-        </IfModule>
 
         # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
         # error, crit, alert, emerg.

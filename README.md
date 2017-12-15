@@ -1,9 +1,9 @@
-Virtualhost Manage Script
+Apache Virtual Hosts Script
 ===========
 
 This is a batch script to create a virtualhost by just passing the domain or subdomain name
 
-## What does it do? ##
+## ABOUT ##
 
 The script asks you for a domain and subdomain name, create a directory using the same domain or subdomain name in /var/www folder and creates a virtualhost with that configuration.
 
